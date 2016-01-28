@@ -41,7 +41,7 @@
             this.fancyBirthday = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cakeWritingText = new System.Windows.Forms.TextBox();
+            this.cakeWriting = new System.Windows.Forms.TextBox();
             this.birthdayCost = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -81,7 +81,7 @@
             // 
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.birthdayCost);
-            this.tabPage2.Controls.Add(this.cakeWritingText);
+            this.tabPage2.Controls.Add(this.cakeWriting);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.fancyBirthday);
@@ -155,6 +155,7 @@
             this.numberBirthday.Name = "numberBirthday";
             this.numberBirthday.Size = new System.Drawing.Size(111, 20);
             this.numberBirthday.TabIndex = 0;
+            this.numberBirthday.ValueChanged += new System.EventHandler(this.numberBirthday_ValueChanged);
             // 
             // fancyBirthday
             // 
@@ -165,6 +166,7 @@
             this.fancyBirthday.TabIndex = 1;
             this.fancyBirthday.Text = "Fancy Decorations";
             this.fancyBirthday.UseVisualStyleBackColor = true;
+            this.fancyBirthday.CheckedChanged += new System.EventHandler(this.fancyBirthday_CheckedChanged);
             // 
             // label3
             // 
@@ -184,12 +186,12 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Cake Writing";
             // 
-            // cakeWritingText
+            // cakeWriting
             // 
-            this.cakeWritingText.Location = new System.Drawing.Point(41, 125);
-            this.cakeWritingText.Name = "cakeWritingText";
-            this.cakeWritingText.Size = new System.Drawing.Size(111, 20);
-            this.cakeWritingText.TabIndex = 5;
+            this.cakeWriting.Location = new System.Drawing.Point(41, 125);
+            this.cakeWriting.Name = "cakeWriting";
+            this.cakeWriting.Size = new System.Drawing.Size(111, 20);
+            this.cakeWriting.TabIndex = 5;
             // 
             // birthdayCost
             // 
@@ -239,7 +241,7 @@
         private System.Windows.Forms.CheckBox fancyBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox birthdayCost;
-        private System.Windows.Forms.TextBox cakeWritingText;
+        private System.Windows.Forms.TextBox cakeWriting;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox fancyBirthday;
