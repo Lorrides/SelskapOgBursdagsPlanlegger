@@ -113,9 +113,19 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(150, 54);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(50, 20);
             this.numericUpDown1.TabIndex = 9;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label1
@@ -152,9 +162,19 @@
             // numberBirthday
             // 
             this.numberBirthday.Location = new System.Drawing.Point(41, 42);
+            this.numberBirthday.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numberBirthday.Name = "numberBirthday";
             this.numberBirthday.Size = new System.Drawing.Size(111, 20);
-            this.numberBirthday.TabIndex = 0;
+            this.numberBirthday.TabIndex = 5;
+            this.numberBirthday.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numberBirthday.ValueChanged += new System.EventHandler(this.numberBirthday_ValueChanged);
             // 
             // fancyBirthday
@@ -192,6 +212,7 @@
             this.cakeWriting.Name = "cakeWriting";
             this.cakeWriting.Size = new System.Drawing.Size(111, 20);
             this.cakeWriting.TabIndex = 5;
+            this.cakeWriting.TextChanged += new System.EventHandler(this.cakeWriting_TextChanged);
             // 
             // birthdayCost
             // 

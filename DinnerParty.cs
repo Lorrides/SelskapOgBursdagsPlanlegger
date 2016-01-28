@@ -6,27 +6,77 @@ namespace SelskapOgBursdagsPlanlegger
 {
     class DinnerParty
     {
-        private bool checked1;
-        private bool checked2;
-        private int value;
+        const int CostOfFoodPerPerson = 25;
 
-        public DinnerParty(int value, bool checked1, bool checked2)
+        private int numberOfPeople;
+        public int NumberOfPeople
         {
-            this.value = value;
-            this.checked1 = checked1;
-            this.checked2 = checked2;
+            get { return numberOfPeople; }
+            set
+            {
+                numberOfPeople = value;
+                CalculateCostOfDecorations(fancyDecorations);
+            }
         }
 
-        public int NumberOfPeople { get; internal set; }
+        private bool fancyDecorations;
 
-        internal void CalculateCostOfDecorations(bool @checked)
+        public decimal CostOfBeveragesPerPersom;
+        public decimal CostOfDecorations = 0;
+        public decimal DagensKurs = 8;
+
+
+
+
+
+
+        public DinnerParty(int numberOfPeople, bool healtyOption, bool fancyDecorations)
         {
-            throw new NotImplementedException();
+            NumberOfPeople = numberOfPeople;
+            this.fancyDecorations = fancyDecorations;
+            SetHealthyPotion(healtyOption);
+            CalculateCostOfDecorations(fancyDecorations);
         }
 
-        internal void SetHealthyPotion(bool @checked)
+        internal void SetHealthyPotion(bool helse)
         {
-            throw new NotImplementedException();
+            if (helse)
+            {
+                CostOfBeveragesPerPersom = 5.0M * DagensKurs;
+            }
+            else
+            {
+                CostOfBeveragesPerPersom = 20.0M * DagensKurs;
+            }
+        }
+
+        internal void CalculateCostOfDecorations(bool fancy)
+        {
+            fancyDecorations = fancy;
+            if (fancy)
+            {
+                CostOfDecorations = (NumberOfPeople * 150.00M * DagensKurs) + 50M;
+            }
+            else
+            {
+                CostOfDecorations = (NumberOfPeople * 70.50M * DagensKurs) + 30M;
+            }
+        }
+
+
+
+        internal decimal CalculateCost(bool kostnader)
+        {
+            decimal totalKost = CostOfDecorations + ((CostOfBeveragesPerPersom + CostOfFoodPerPerson) * NumberOfPeople);
+
+            if (kostnader)
+            {
+                return totalKost * .95M;
+            }
+            else
+            {
+                return totalKost;
+            }
         }
     }
 }
