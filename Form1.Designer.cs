@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.costText = new System.Windows.Forms.TextBox();
             this.kost = new System.Windows.Forms.Label();
             this.healthyBox = new System.Windows.Forms.CheckBox();
             this.fancyBox = new System.Windows.Forms.CheckBox();
@@ -55,6 +55,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.tabControl1.Location = new System.Drawing.Point(1, 3);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
@@ -65,7 +66,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Ivory;
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.costText);
             this.tabPage1.Controls.Add(this.kost);
             this.tabPage1.Controls.Add(this.healthyBox);
             this.tabPage1.Controls.Add(this.fancyBox);
@@ -78,12 +79,12 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "MiddagsSelskap";
             // 
-            // textBox1
+            // costText
             // 
-            this.textBox1.Location = new System.Drawing.Point(49, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.costText.Location = new System.Drawing.Point(49, 103);
+            this.costText.Name = "costText";
+            this.costText.Size = new System.Drawing.Size(100, 20);
+            this.costText.TabIndex = 5;
             // 
             // kost
             // 
@@ -128,6 +129,11 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(18, 28);
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(131, 20);
             this.numericUpDown1.TabIndex = 0;
@@ -222,10 +228,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(189, 181);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Utregner";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -242,7 +249,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox costText;
         private System.Windows.Forms.Label kost;
         private System.Windows.Forms.CheckBox healthyBox;
         private System.Windows.Forms.CheckBox fancyBox;

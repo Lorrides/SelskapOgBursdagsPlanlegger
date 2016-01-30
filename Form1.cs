@@ -13,13 +13,13 @@ namespace SelskapOgBursdagsPlanlegger
     public partial class Form1 : Form
     {
 
-        MiddagsSelskap middagsSelskap;
+        DinnerParty middagsSelskap;
 
 
         public Form1()
         {
             InitializeComponent();
-            middagsSelskap = new MiddagsSelskap((int)numericUpDown1.Value,
+            middagsSelskap = new DinnerParty((int)numericUpDown1.Value,
                                  healthyBox.Checked, fancyBox.Checked);
             middagsSelskap.CalculateCostOfDecorations(fancyBox.Checked);
             middagsSelskap.SetHealthyPotion(healthyBox.Checked);
@@ -51,8 +51,8 @@ namespace SelskapOgBursdagsPlanlegger
         private void DisplayDinnerParrtyCost()
         {
             decimal Kost = middagsSelskap.CalculateCost(healthyBox.Checked);
-            kost.Text = Kost.ToString("c");
+            costText.Text = Kost.ToString("c");
         }
 
-
     }
+}
