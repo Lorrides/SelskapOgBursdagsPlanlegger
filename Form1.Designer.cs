@@ -195,10 +195,21 @@
             this.fancyBirthday.TabIndex = 7;
             this.fancyBirthday.Text = "Fancy Decorations";
             this.fancyBirthday.UseVisualStyleBackColor = true;
+            this.fancyBirthday.CheckedChanged += new System.EventHandler(this.fancyBirthday_CheckedChanged_1);
             // 
             // numberBirthday
             // 
             this.numberBirthday.Location = new System.Drawing.Point(19, 28);
+            this.numberBirthday.Maximum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.numberBirthday.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numberBirthday.Name = "numberBirthday";
             this.numberBirthday.Size = new System.Drawing.Size(120, 20);
             this.numberBirthday.TabIndex = 6;
@@ -207,6 +218,7 @@
             0,
             0,
             0});
+            this.numberBirthday.ValueChanged += new System.EventHandler(this.numberBirthday_ValueChanged_1);
             // 
             // label3
             // 
@@ -223,6 +235,7 @@
             this.cakeWriting.Name = "cakeWriting";
             this.cakeWriting.Size = new System.Drawing.Size(115, 20);
             this.cakeWriting.TabIndex = 8;
+            this.cakeWriting.TextChanged += new System.EventHandler(this.cakeWriting_TextChanged_1);
             // 
             // Form1
             // 

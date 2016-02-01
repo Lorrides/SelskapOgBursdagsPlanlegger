@@ -2,36 +2,24 @@
 
 namespace SelskapOgBursdagsPlanlegger
 {
-    class BirthdayParty
+    class BirthdayParty : Party
     {
-        public const int CostOfFoodPerPerson = 25;
-
-        public decimal CostOfDecorations = 0;
-        private bool fancyDecorations;
         public int CakeSize;
 
-
-
-        public BirthdayParty (int numberOfPeople, bool fancyDecorations, string cakeWriting)
+        public BirthdayParty(int numberOfPeople, bool fancyDecorations, string cakeWriting)
+            : base(numberOfPeople, fancyDecorations)
         {
-            this.numberOfPeople = numberOfPeople;
-            this.fancyDecorations = fancyDecorations;
-            CalculateCaceSize();
+            CalculateCakeSize();
             this.CakeWriting = cakeWriting;
             CalculateCostOfDecorations(fancyDecorations);
         }
 
-
-        private void CalculateCaceSize()
+        private void CalculateCakeSize()
         {
             if (NumberOfPeople <= 4)
-            {
                 CakeSize = 8;
-            }
             else
-            {
                 CakeSize = 16;
-            }
         }
 
         private string cakeWriting = "";
@@ -41,66 +29,41 @@ namespace SelskapOgBursdagsPlanlegger
             set
             {
                 int maxLength;
-
-                if (CakeSize == 8)maxLength = 16;
-                else maxLength = 40;
-
+                if (CakeSize == 8)
+                    maxLength = 16;
+                else
+                    maxLength = 40;
                 if (value.Length > maxLength)
                 {
                     MessageBox.Show("Too many letters for a " + CakeSize + " inch cake");
-                    if (value.Length > maxLength)
+                    if (maxLength > this.cakeWriting.Length)
                         maxLength = this.cakeWriting.Length;
                     this.cakeWriting = cakeWriting.Substring(0, maxLength);
                 }
                 else
-                {
                     this.cakeWriting = value;
-                }
-
             }
         }
 
-        public decimal CalculateCost()
+        public override decimal CalculateCost()
         {
-            decimal TotalCost = CostOfDecorations + (CostOfFoodPerPerson * NumberOfPeople);
             decimal CakeCost;
             if (CakeSize == 8)
-            {
-                CakeCost = 40M + CakeWriting.Length * .25M;
-            }
+                CakeCost = 40M + CakeWriting.Length * 10M;
             else
-            {
-                CakeCost = 75 + CakeWriting.Length * .25M;
-            }
-            return TotalCost + CakeCost;
+                CakeCost = 75M + CakeWriting.Length * 10M;
+            return base.CalculateCost() + CakeCost;
         }
-        
 
-        private int numberOfPeople;
-        public int NumberOfPeople
+        public override int NumberOfPeople
         {
-            get { return numberOfPeople; }
+            get { return base.NumberOfPeople; }
             set
             {
-                numberOfPeople = value;
-                CalculateCostOfDecorations(fancyDecorations);
-                CalculateCaceSize();
+                base.NumberOfPeople = value;
+                CalculateCakeSize();
                 this.CakeWriting = cakeWriting;
             }
         }
-
-        public void CalculateCostOfDecorations (bool fancy)
-        {
-            fancyDecorations = fancy;
-            if (fancy)
-            {
-                CostOfDecorations = (NumberOfPeople * 15.00M) +50M;
-            }
-            else
-            {
-                CostOfDecorations = (NumberOfPeople * 7.50M) + 30M;
-            }
-        }
-
     }
 }

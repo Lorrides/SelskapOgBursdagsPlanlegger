@@ -11,6 +11,7 @@ namespace SelskapOgBursdagsPlanlegger
         const int CostOfFoodPerPerson = 25;
         private bool fancyDecorations;
         public decimal CostOfDecorations = 0;
+        const int DagensKurs = 9;
 
         public Party(int numberOfPeople, bool fancyDecorations)
         {
@@ -33,9 +34,9 @@ namespace SelskapOgBursdagsPlanlegger
         {
             fancyDecorations = fancy;
             if (fancy)
-                CostOfDecorations = (NumberOfPeople * 15.00M) + 50M;
+                CostOfDecorations = (NumberOfPeople * 15.00M) + 50M * DagensKurs;
             else
-                CostOfDecorations = (NumberOfPeople * 7.50M) + 30M;
+                CostOfDecorations = (NumberOfPeople * 7.50M) + 30M * DagensKurs;
         }
 
         public virtual decimal CalculateCost()
