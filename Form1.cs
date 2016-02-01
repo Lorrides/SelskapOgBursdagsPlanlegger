@@ -12,46 +12,69 @@ namespace SelskapOgBursdagsPlanlegger
 {
     public partial class Form1 : Form
     {
-
-        DinnerParty middagsSelskap;
-
-
+        DinnerParty dinnerParty;
+        BirthdayParty birthdayParty;
         public Form1()
         {
             InitializeComponent();
-            middagsSelskap = new DinnerParty((int)numericUpDown1.Value,
+            dinnerParty = new DinnerParty((int)numericUpDown1.Value,
                                  healthyBox.Checked, fancyBox.Checked);
-            middagsSelskap.CalculateCostOfDecorations(fancyBox.Checked);
-            middagsSelskap.SetHealthyPotion(healthyBox.Checked);
-        }
+            DisplayDinnerPartyCost();
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            birthdayParty = new BirthdayParty((int)numberBirthday.Value,
+                              fancyBirthday.Checked, cakeWriting.Text);
+            DisplayBirthdayPartyCost();
         }
+        
 
         private void fancyBox_CheckedChanged(object sender, EventArgs e)
         {
-            middagsSelskap.CalculateCostOfDecorations(fancyBox.Checked);
-            DisplayDinnerParrtyCost();
+            dinnerParty.CalculateCostOfDecorations(fancyBox.Checked);
+            DisplayDinnerPartyCost();
         }
 
         private void healthyBox_CheckedChanged(object sender, EventArgs e)
         {
-            middagsSelskap.SetHealthyPotion(healthyBox.Checked);
-            DisplayDinnerParrtyCost();
+            dinnerParty.SetHealthyOption(healthyBox.Checked);
+            DisplayDinnerPartyCost();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            middagsSelskap.NumberOfPeople = (int)numericUpDown1.Value;
-            DisplayDinnerParrtyCost();
+            dinnerParty.NumberOfPeople = (int)numericUpDown1.Value;
+            DisplayDinnerPartyCost();
         }
 
-        private void DisplayDinnerParrtyCost()
+        private void DisplayDinnerPartyCost()
         {
-            decimal Kost = middagsSelskap.CalculateCost(healthyBox.Checked);
-            costText.Text = Kost.ToString("c");
+            decimal Cost = dinnerParty.CalculateCost(healthyBox.Checked);
+            costLabel.Text = Cost.ToString("c");
+        }
+
+
+        private void numberBirthday_ValueChanged(object sender, EventArgs e)
+        {
+            birthdayParty.NumberOfPeople = (int)numberBirthday.Value;
+            DisplayBirthdayPartyCost();
+        }
+
+        private void fancyBirthday_CheckedChanged(object sender, EventArgs e)
+        {
+            birthdayParty.CalculateCostOfDecorations(fancyBirthday.Checked);
+            DisplayBirthdayPartyCost();
+        }
+
+        private void cakeWriting_TextChanged(object sender, EventArgs e)
+        {
+            birthdayParty.CakeWriting = cakeWriting.Text;
+            DisplayBirthdayPartyCost();
+        }
+
+        private void DisplayBirthdayPartyCost()
+        {
+            cakeWriting.Text = birthdayParty.CakeWriting;
+            decimal cost = birthdayParty.CalculateCost();
+            birthdayCost.Text = cost.ToString("c");
         }
 
     }

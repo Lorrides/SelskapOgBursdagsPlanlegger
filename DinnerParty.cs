@@ -4,79 +4,35 @@ using System;
 
 namespace SelskapOgBursdagsPlanlegger
 {
-    class DinnerParty
+    class DinnerParty : Party
     {
-        const int CostOfFoodPerPerson = 25;
+        public decimal CostOfBeveragesPerPerson;
 
-        private int numberOfPeople;
-        public int NumberOfPeople
+        public DinnerParty(int numberOfPeople, bool healthyOption,
+                           bool fancyDecorations)
+            : base(numberOfPeople, fancyDecorations)
         {
-            get { return numberOfPeople; }
-            set
-            {
-                numberOfPeople = value;
-                CalculateCostOfDecorations(fancyDecorations);
-            }
-        }
-
-        private bool fancyDecorations;
-
-        public decimal CostOfBeveragesPerPersom;
-        public decimal CostOfDecorations = 0;
-        public decimal DagensKurs = 8;
-
-
-
-
-
-
-        public DinnerParty(int numberOfPeople, bool healtyOption, bool fancyDecorations)
-        {
-            NumberOfPeople = numberOfPeople;
-            this.fancyDecorations = fancyDecorations;
-            SetHealthyPotion(healtyOption);
+            SetHealthyOption(healthyOption);
             CalculateCostOfDecorations(fancyDecorations);
         }
 
-        internal void SetHealthyPotion(bool helse)
+        public void SetHealthyOption(bool healthyOption)
         {
-            if (helse)
-            {
-                CostOfBeveragesPerPersom = 5.0M * DagensKurs;
-            }
+            if (healthyOption)
+                CostOfBeveragesPerPerson = 5.00M;
             else
-            {
-                CostOfBeveragesPerPersom = 20.0M * DagensKurs;
-            }
+                CostOfBeveragesPerPerson = 20.00M;
         }
 
-        internal void CalculateCostOfDecorations(bool fancy)
+        public decimal CalculateCost(bool healthyOption)
         {
-            fancyDecorations = fancy;
-            if (fancy)
-            {
-                CostOfDecorations = (NumberOfPeople * 150.00M * DagensKurs) + 50M;
-            }
+            decimal totalCost = base.CalculateCost()
+                              + (CostOfBeveragesPerPerson * NumberOfPeople);
+
+            if (healthyOption)
+                return totalCost * .95M;
             else
-            {
-                CostOfDecorations = (NumberOfPeople * 70.50M * DagensKurs) + 30M;
-            }
-        }
-
-
-
-        internal decimal CalculateCost(bool kostnader)
-        {
-            decimal totalKost = CostOfDecorations + ((CostOfBeveragesPerPersom + CostOfFoodPerPerson) * NumberOfPeople);
-
-            if (kostnader)
-            {
-                return totalKost * .95M;
-            }
-            else
-            {
-                return totalKost;
-            }
+                return totalCost;
         }
     }
 }
