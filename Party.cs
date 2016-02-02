@@ -1,53 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SelskapOgBursdagsPlanlegger
+﻿namespace SelskapOgBursdagsPlanlegger
 {
-    class Party
+    internal class Party
     {
-        const int CostOfFoodPerPerson = 25;
-        private bool fancyDecorations;
-        public decimal CostOfDecorations = 0;
-        const int DagensKurs = 9;
+        private const int CostOfFoodPerPerson = 25;
+        private const int DagensKurs = 9;
+        private bool _fancyDecorations;
+
+        private int _numberOfPeople;
+        public decimal CostOfDecorations;
 
         public Party(int numberOfPeople, bool fancyDecorations)
         {
-            this.fancyDecorations = fancyDecorations;
-            this.NumberOfPeople = numberOfPeople;
+            _fancyDecorations = fancyDecorations;
+            NumberOfPeople = numberOfPeople;
         }
 
-        private int numberOfPeople;
         public virtual int NumberOfPeople
         {
-            get { return numberOfPeople; }
+            get { return _numberOfPeople; }
             set
             {
-                numberOfPeople = value;
-                CalculateCostOfDecorations(fancyDecorations);
+                _numberOfPeople = value;
+                CalculateCostOfDecorations(_fancyDecorations);
             }
         }
 
         public void CalculateCostOfDecorations(bool fancy)
         {
-            fancyDecorations = fancy;
+            _fancyDecorations = fancy;
             if (fancy)
-                CostOfDecorations = (NumberOfPeople * 15.00M) + 50M * DagensKurs;
+                CostOfDecorations = NumberOfPeople*15.00M + 50M*DagensKurs;
             else
-                CostOfDecorations = (NumberOfPeople * 7.50M) + 30M * DagensKurs;
+                CostOfDecorations = NumberOfPeople*7.50M + 30M*DagensKurs;
         }
 
         public virtual decimal CalculateCost()
         {
-            decimal TotalCost = CostOfDecorations + (CostOfFoodPerPerson * NumberOfPeople);
+            var totalCost = CostOfDecorations + CostOfFoodPerPerson*NumberOfPeople;
             if (NumberOfPeople > 12)
             {
-                TotalCost += 100M;
+                totalCost += 100M;
             }
-            return TotalCost;
+            return totalCost;
         }
     }
 }
-

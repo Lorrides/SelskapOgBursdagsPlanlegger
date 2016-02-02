@@ -1,16 +1,12 @@
-﻿
-
-using System;
-
-namespace SelskapOgBursdagsPlanlegger
+﻿namespace SelskapOgBursdagsPlanlegger
 {
-    class DinnerParty : Party
+    internal class DinnerParty : Party
     {
+        private const int DagensKurs = 9;
         public decimal CostOfBeveragesPerPerson;
-        const int DagensKurs = 9;
 
         public DinnerParty(int numberOfPeople, bool healthyOption,
-                           bool fancyDecorations)
+            bool fancyDecorations)
             : base(numberOfPeople, fancyDecorations)
         {
             SetHealthyOption(healthyOption);
@@ -20,20 +16,19 @@ namespace SelskapOgBursdagsPlanlegger
         public void SetHealthyOption(bool healthyOption)
         {
             if (healthyOption)
-                CostOfBeveragesPerPerson = 5.00M * DagensKurs;
+                CostOfBeveragesPerPerson = 5.00M*DagensKurs;
             else
-                CostOfBeveragesPerPerson = 20.00M * DagensKurs;
+                CostOfBeveragesPerPerson = 20.00M*DagensKurs;
         }
 
         public decimal CalculateCost(bool healthyOption)
         {
-            decimal totalCost = base.CalculateCost()
-                              + (CostOfBeveragesPerPerson * NumberOfPeople);
+            var totalCost = base.CalculateCost()
+                            + CostOfBeveragesPerPerson*NumberOfPeople;
 
             if (healthyOption)
-                return totalCost * .95M * DagensKurs;
-            else
-                return totalCost;
+                return totalCost*.95M*DagensKurs;
+            return totalCost;
         }
     }
 }

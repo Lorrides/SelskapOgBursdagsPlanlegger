@@ -2,17 +2,54 @@
 
 namespace SelskapOgBursdagsPlanlegger
 {
-    class BirthdayParty : Party
+    internal class BirthdayParty : Party
     {
+        private const int DagensKurs = 9;
         public int CakeSize;
-        const int DagensKurs = 9;
+
+        private string _cakeWriting = "";
+        private string _toManyLetters = "Too many letters for a";
+        private string _inchCake = "inch cake";
 
         public BirthdayParty(int numberOfPeople, bool fancyDecorations, string cakeWriting)
             : base(numberOfPeople, fancyDecorations)
         {
             CalculateCakeSize();
-            this.CakeWriting = cakeWriting;
+            CakeWriting = cakeWriting;
             CalculateCostOfDecorations(fancyDecorations);
+        }
+
+        public string CakeWriting
+        {
+            get { return _cakeWriting; }
+            set
+            {
+                int maxLength;
+                if (CakeSize == 8)
+                    maxLength = 16;
+                else
+                    maxLength = 40;
+                if (value.Length > maxLength)
+                {
+                    MessageBox.Show( _toManyLetters + CakeSize + _inchCake);
+                    if (maxLength > _cakeWriting.Length)
+                        maxLength = _cakeWriting.Length;
+                    _cakeWriting = _cakeWriting.Substring(0, maxLength);
+                }
+                else
+                    _cakeWriting = value;
+            }
+        }
+
+        public override int NumberOfPeople
+        {
+            get { return base.NumberOfPeople; }
+            set
+            {
+                base.NumberOfPeople = value;
+                CalculateCakeSize();
+                CakeWriting = _cakeWriting;
+            }
         }
 
         private void CalculateCakeSize()
@@ -23,48 +60,14 @@ namespace SelskapOgBursdagsPlanlegger
                 CakeSize = 16;
         }
 
-        private string cakeWriting = "";
-        public string CakeWriting
-        {
-            get { return this.cakeWriting; }
-            set
-            {
-                int maxLength;
-                if (CakeSize == 8)
-                    maxLength = 16;
-                else
-                    maxLength = 40;
-                if (value.Length > maxLength)
-                {
-                    MessageBox.Show("Too many letters for a " + CakeSize + " inch cake");
-                    if (maxLength > this.cakeWriting.Length)
-                        maxLength = this.cakeWriting.Length;
-                    this.cakeWriting = cakeWriting.Substring(0, maxLength);
-                }
-                else
-                    this.cakeWriting = value;
-            }
-        }
-
         public override decimal CalculateCost()
         {
-            decimal CakeCost;
+            decimal cakeCost;
             if (CakeSize == 8)
-                CakeCost = 40M + CakeWriting.Length * 10M * DagensKurs;
+                cakeCost = 40M + CakeWriting.Length*10M*DagensKurs;
             else
-                CakeCost = 75M + CakeWriting.Length * 10M * DagensKurs;
-            return base.CalculateCost() + CakeCost;
-        }
-
-        public override int NumberOfPeople
-        {
-            get { return base.NumberOfPeople; }
-            set
-            {
-                base.NumberOfPeople = value;
-                CalculateCakeSize();
-                this.CakeWriting = cakeWriting;
-            }
+                cakeCost = 75M + CakeWriting.Length*10M*DagensKurs;
+            return base.CalculateCost() + cakeCost;
         }
     }
 }
