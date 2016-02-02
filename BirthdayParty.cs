@@ -5,6 +5,7 @@ namespace SelskapOgBursdagsPlanlegger
     class BirthdayParty : Party
     {
         public int CakeSize;
+        const int DagensKurs = 9;
 
         public BirthdayParty(int numberOfPeople, bool fancyDecorations, string cakeWriting)
             : base(numberOfPeople, fancyDecorations)
@@ -49,9 +50,9 @@ namespace SelskapOgBursdagsPlanlegger
         {
             decimal CakeCost;
             if (CakeSize == 8)
-                CakeCost = 40M + CakeWriting.Length * 10M;
+                CakeCost = 40M + CakeWriting.Length * 10M * DagensKurs;
             else
-                CakeCost = 75M + CakeWriting.Length * 10M;
+                CakeCost = 75M + CakeWriting.Length * 10M * DagensKurs;
             return base.CalculateCost() + CakeCost;
         }
 

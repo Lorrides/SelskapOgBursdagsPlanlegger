@@ -7,6 +7,7 @@ namespace SelskapOgBursdagsPlanlegger
     class DinnerParty : Party
     {
         public decimal CostOfBeveragesPerPerson;
+        const int DagensKurs = 9;
 
         public DinnerParty(int numberOfPeople, bool healthyOption,
                            bool fancyDecorations)
@@ -19,9 +20,9 @@ namespace SelskapOgBursdagsPlanlegger
         public void SetHealthyOption(bool healthyOption)
         {
             if (healthyOption)
-                CostOfBeveragesPerPerson = 5.00M;
+                CostOfBeveragesPerPerson = 5.00M * DagensKurs;
             else
-                CostOfBeveragesPerPerson = 20.00M;
+                CostOfBeveragesPerPerson = 20.00M * DagensKurs;
         }
 
         public decimal CalculateCost(bool healthyOption)
@@ -30,7 +31,7 @@ namespace SelskapOgBursdagsPlanlegger
                               + (CostOfBeveragesPerPerson * NumberOfPeople);
 
             if (healthyOption)
-                return totalCost * .95M;
+                return totalCost * .95M * DagensKurs;
             else
                 return totalCost;
         }
