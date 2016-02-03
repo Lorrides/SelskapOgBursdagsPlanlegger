@@ -18,6 +18,9 @@ namespace SelskapOgBursdagsPlanlegger
             birthdayParty = new BirthdayParty((int) numberBirthday.Value,
                 fancyBirthday.Checked, cakeWriting.Text);
             DisplayBirthdayPartyCost();
+
+
+            Tilbud tilbud = new Tilbud();
         }
 
 
@@ -68,6 +71,12 @@ namespace SelskapOgBursdagsPlanlegger
         {
             birthdayParty.CakeWriting = cakeWriting.Text;
             DisplayBirthdayPartyCost();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // få opp galleri, med sendig av tilbud til kunder fra mail.
+            
         }
     }
 }

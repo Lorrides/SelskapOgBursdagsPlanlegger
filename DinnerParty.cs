@@ -5,6 +5,7 @@
         private const int DagensKurs = 9;
         public decimal CostOfBeveragesPerPerson;
 
+
         public DinnerParty(int numberOfPeople, bool healthyOption,
             bool fancyDecorations)
             : base(numberOfPeople, fancyDecorations)

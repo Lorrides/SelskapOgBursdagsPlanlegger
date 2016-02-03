@@ -44,6 +44,7 @@
             this.numberBirthday = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.cakeWriting = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -237,12 +238,27 @@
             this.cakeWriting.TabIndex = 8;
             this.cakeWriting.TextChanged += new System.EventHandler(this.cakeWriting_TextChanged_1);
             // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::SelskapOgBursdagsPlanlegger.Properties.Resources._2014_03_23_21_48_29_shutterstock_108353102;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(232, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(207, 132);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Sendt tilbudd til kunde\r\nTrykk her!\r\n";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(189, 181);
+            this.ClientSize = new System.Drawing.Size(481, 181);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Utregner";
@@ -275,6 +291,7 @@
         private System.Windows.Forms.NumericUpDown numberBirthday;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox cakeWriting;
+        private System.Windows.Forms.Button button1;
     }
 }
 
