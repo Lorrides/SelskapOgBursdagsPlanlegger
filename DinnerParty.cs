@@ -28,7 +28,7 @@
                             + CostOfBeveragesPerPerson*NumberOfPeople;
 
             if (healthyOption)
-                return totalCost*.95M*DagensKurs;
+                return totalCost*.95M;
             return totalCost;
         }
     }

@@ -29,14 +29,14 @@
         {
             _fancyDecorations = fancy;
             if (fancy)
-                CostOfDecorations = NumberOfPeople*15.00M + 50M*DagensKurs;
+                CostOfDecorations = NumberOfPeople*15.00M + 50M;
             else
-                CostOfDecorations = NumberOfPeople*7.50M + 30M*DagensKurs;
+                CostOfDecorations = NumberOfPeople*7.50M + 30M ;
         }
 
         public virtual decimal CalculateCost()
         {
-            var totalCost = CostOfDecorations + CostOfFoodPerPerson*NumberOfPeople;
+            var totalCost = CostOfDecorations + CostOfFoodPerPerson*NumberOfPeople * DagensKurs;
             if (NumberOfPeople > 12)
             {
                 totalCost += 100M;
